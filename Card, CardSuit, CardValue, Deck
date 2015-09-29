@@ -1,0 +1,82 @@
+
+public class Card {
+	private CardSuit suit;
+	private CardValue value;
+	public Card(CardSuit suit, CardValue number)
+	{
+		this.suit = suit;
+		value = number;
+	}
+	public String toString() {
+			return suit + " of " + value;
+	}
+	
+
+	public boolean winner(Card c) {
+			if(this.value.compareTo(c.value) > 1)
+			{	
+				return true;
+			}
+			else if(this.value.compareTo(c.value) < 1)
+			{
+				return false;
+			}
+			else
+			{
+				if(this.suit.compareTo(c.suit) > 1)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+	}
+}
+
+
+public enum CardSuit {
+	DIAMONDS, CLUBS, HEARTS, SPADES;
+}
+
+
+public enum CardValue {
+	TWO, 
+	THREE, 
+	FOUR, 
+	FIVE, 
+	SIX, 
+	SEVEN, 
+	EIGHT, 
+	NINE,
+	TEN, 
+	JACK, 
+	QUEEN,
+	KING ,
+	ACE; 
+}
+
+public class Deck {
+
+	private Card[] cards = new Card[52];
+	
+	public Deck() {
+		for(int x = 0; x < 13; x++)
+		{
+			for(int y = 0; y < 4; y++)
+			{
+			cards[x] = new Card(CardSuit.HEARTS,CardValue.TWO);
+			cards[x + 13] = new Card(CardSuit.DIAMONDS, CardValue.);
+			cards[x + 26] = new Card(CardSuit.CLUBS, x + 1);
+			cards[x + 39] = new Card(CardSuit.SPADES, x + 1);
+			}
+		}
+	}
+
+	public Card draw() {
+		Card drawnCard = cards[(int)(Math.random()*51)];
+		
+		return drawnCard;
+	}
+}
